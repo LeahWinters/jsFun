@@ -27,21 +27,33 @@ const kittyPrompts = {
 
     // Return an array of just the names of kitties who are orange e.g.
     // ['Tiger', 'Snickers']
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+
+
+
+    const result = kitties.filter(kitty => {
+      return kitty.color === 'orange';
+    }).map(kitty => kitty.name);
     return result;
 
     // Annotation:
-    // Write your annotation here as a comment
+    // I wanted to loop through the array of object instances of kitties,
+    // to find the names of just the orange ones.
+    // I used a filter to get the return of just orange cats, and followed it,
+    // with a map to search through the array of two orange cats to get just
+    // their name
   },
 
   sortByAge() {
     // Sort the kitties by their age
-
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = kitties.sort((a, b) => {
+      return  b.age - a.age;
+    });
     return result;
 
     // Annotation:
-    // Write your annotation here as a comment
+    // I wanted organize the cats age from greatest to least.
+    // So to do so, I used the array prototype sort to sort the ages
+    // and return the new array of obj.
   },
 
   growUp() {
@@ -58,24 +70,21 @@ const kittyPrompts = {
     // },
     // ...etc]
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = kitties.map(kitty => {
+      kitty.age += 2;
+      return kitty;
+    });
     return result;
   }
 };
 
 
 
-
-
-
 // ---------------------------------------------------------------------------
 // ---------------------------------------------------------------------------
 // ---------------------------------------------------------------------------
 // ---------------------------------------------------------------------------
 // ---------------------------------------------------------------------------
-
-
-
 
 
 
@@ -90,7 +99,15 @@ const clubPrompts = {
     //   ...etc
     // }
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = clubs.reduce((acc, club) => {
+      club.members.forEach(member => {
+        if (!acc[member]) {
+          acc[member] = [];
+        }
+        acc[member].push(club.club);
+      });
+      return acc;
+    }, {});
     return result;
 
     // Annotation:
@@ -119,6 +136,8 @@ const modPrompts = {
   studentsPerMod() {
     // Return an array of objects where the keys are mod (the number of the module)
     // and studentsPerInstructor (how many students per instructor there are for that mod) e.g.
+
+
     // [
     //   { mod: 1, studentsPerInstructor: 9 },
     //   { mod: 2, studentsPerInstructor: 11 },
@@ -126,7 +145,10 @@ const modPrompts = {
     //   { mod: 4, studentsPerInstructor: 8 }
     // ]
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = mods.map(mod => {
+      var studentsPerInstructor = mod.students / mod.instructors;
+      return {mod: mod.mod, studentsPerInstructor};
+    });
     return result;
 
     // Annotation:
@@ -161,7 +183,9 @@ const cakePrompts = {
     //    ..etc
     // ]
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = cakes.map(cake => {
+      return {flavor: cake.cakeFlavor, inStock: cake.inStock};
+    });
     return result;
 
     // Annotation:
@@ -189,7 +213,9 @@ const cakePrompts = {
     // ..etc
     // ]
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = cakes.filter(cake => {
+      return cake.inStock;
+    });
     return result;
 
     // Annotation:
@@ -200,7 +226,10 @@ const cakePrompts = {
     // Return the total amount of cakes in stock e.g.
     // 59
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = cakes.reduce((acc, cake) => {
+      acc += cake.inStock;
+      return acc;
+    }, 0);
     return result;
 
     // Annotation:
@@ -211,10 +240,15 @@ const cakePrompts = {
     // Return an array of all unique toppings (no duplicates) needed to bake
     // every cake in the dataset e.g.
     // ['dutch process cocoa', 'toasted sugar', 'smoked sea salt', 'berries', ..etc]
-
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = cakes.reduce((acc, cake) => {
+      cake.toppings.forEach(topping => {
+        if(!acc.includes(topping)) {
+          acc.push(topping);
+        }
+      });
+      return acc;
+    }, []);
     return result;
-
     // Annotation:
     // Write your annotation here as a comment
   },
@@ -229,8 +263,15 @@ const cakePrompts = {
     //    'berries': 2,
     //    ...etc
     // }
-
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = cakes.reduce((acc, cake) => {
+      cake.toppings.forEach(topping => {
+        if (!acc[topping]) {
+          acc[topping] = 0;
+        }
+        acc[topping]++;
+      });
+      return acc;
+    }, {});
     return result;
 
     // Annotation:

@@ -14,6 +14,7 @@ const context = {
 
     const ship = new SpaceProbe('voyager', 'classy');
 
+    console.log(ship.fly());
 
     // What is the value of `this` when we call ship.fly()?
     const result = 'REPLACE WITH YOUR RESULT HERE';
