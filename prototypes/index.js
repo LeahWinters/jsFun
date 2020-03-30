@@ -306,7 +306,7 @@ const classPrompts = {
     //   { roomLetter: 'G', program: 'FE', capacity: 29 }
     // ]
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = classrooms.filter(room => room.program === 'FE');
     return result;
 
     // Annotation:
@@ -321,7 +321,27 @@ const classPrompts = {
     //   beCapacity: 96
     // }
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    // fe and be seperatly and find the capacity from both
+    // add the numbers from each cat together
+    // return an obj of fe and be
+
+    const fe = classrooms.filter(room => room.program === 'FE');
+
+    const be = classrooms.filter(room => room.program === 'BE');
+
+    const feResult = fe.reduce((acc, room) => {
+      return acc += room.capacity;
+    }, 0);
+
+    const beResult = be.reduce((acc, room) => {
+      return acc += room.capacity;
+    }, 0);
+
+    const result = {
+      feCapacity: feResult,
+      beCapacity: beResult
+    };
+
     return result;
 
     // Annotation:
@@ -331,7 +351,8 @@ const classPrompts = {
   sortByCapacity() {
     // Return the array of classrooms sorted by their capacity (least capacity to greatest)
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = classrooms.sort((a, b) =>
+      a.capacity - b.capacity);
     return result;
 
     // Annotation:
@@ -357,8 +378,8 @@ const bookPrompts = {
     //   'The Curious Incident of the Dog in the Night - Time', 'The Bell Jar',
     //   'Catch-22', 'Treasure Island']
 
-
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const newBooksArray = books.filter(book => book.genre !== 'True Crime' && book.genre !== 'Horror');
+    const result = newBooksArray.map(book => book.title);
     return result;
 
     // Annotation:
@@ -373,7 +394,20 @@ const bookPrompts = {
     //  { title: 'Life of Pi', year: 2001 },
     //  { title: 'The Curious Incident of the Dog in the Night-Time', year: 2003 }]
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const correctBooks = books.filter(book => {
+      return book.published >= 1990 || book.published >= 2000;
+    });
+
+    const correctData = correctBooks.map(book => {
+      let cleanedData = {
+        title: book.title,
+        year: book.published
+      }
+      return cleanedData;
+    });
+
+
+    const result = correctData;
     return result;
 
     // Annotation:
@@ -396,7 +430,13 @@ const weatherPrompts = {
     // return an array of all the average temperatures. Eg:
     // [ 40, 40, 44.5, 43.5, 57, 35, 65.5, 62, 14, 46.5 ]
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const averageTemps = weather.reduce((acc, location) => {
+      var avg = (location.temperature.high + location.temperature.low) / 2;
+      acc.push(avg);
+      return acc;
+    }, []);
+
+    const result = averageTemps;
     return result;
 
     // Annotation:

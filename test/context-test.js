@@ -22,25 +22,25 @@ describe("CONTEXT", () => {
   it("exerciseA", () => {
     const e = "global window object" == context.exerciseA();
     expect(e).withMessage("Your result is not the correct context").to.be.true
-  }), it.skip("exerciseB", () => {
+  }), it("exerciseB", () => {
     const e = "global window object" == context.exerciseB();
     expect(e).withMessage("Your result is not the correct context").to.be.true
-  }), it.skip("exerciseC", () => {
+  }), it("exerciseC", () => {
     const e = "el" == context.exerciseC();
     expect(e).withMessage("Your result is not the correct context").to.be.true
-  }), it.skip("exerciseD", () => {
+  }), it("exerciseD", () => {
     const e = "global window object" == context.exerciseD();
     expect(e).withMessage("Your result is not the correct context").to.be.true
-  }), it.skip("exerciseE", () => {
+  }), it("exerciseE", () => {
     const e = "global window object" == context.exerciseE();
     expect(e).withMessage("Your result is not the correct context").to.be.true
-  }), it.skip("exerciseF", () => {
+  }), it("exerciseF", () => {
     const e = "instance of Hero" == context.exerciseF();
     expect(e).withMessage("Your result is not the correct context").to.be.true
-  }), it.skip("exerciseG", () => {
+  }), it("exerciseG", () => {
     const e = "global window object" == context.exerciseG();
     expect(e).withMessage("Your result is not the correct context").to.be.true
-  }), it.skip("exerciseH", () => {
+  }), it.only("exerciseH", () => {
     const e = "obj" == context.exerciseH();
     expect(e).withMessage("Your result is not the correct context").to.be.true
   }), it.skip("exerciseI", () => {

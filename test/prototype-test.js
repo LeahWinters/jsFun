@@ -175,7 +175,7 @@ describe("PROTOTYPES", () => {
       })
     })
   }), describe("Class Prompts", () => {
-    it.skip("feClassrooms", () => {
+    it("feClassrooms", () => {
       const e = classPrompts.feClassrooms();
       expect(e).to.deep.equal([{
         roomLetter: "A",
@@ -194,13 +194,13 @@ describe("PROTOTYPES", () => {
         program: "FE",
         capacity: 29
       }])
-    }), it.skip("totalCapacities", () => {
+    }), it("totalCapacities", () => {
       const e = classPrompts.totalCapacities();
       expect(e).to.deep.equal({
         feCapacity: 110,
         beCapacity: 96
       })
-    }), it.skip("sortByCapacity", () => {
+    }), it("sortByCapacity", () => {
       const e = classPrompts.sortByCapacity();
       expect(e).to.deep.equal([{
         roomLetter: "H",
@@ -238,7 +238,7 @@ describe("PROTOTYPES", () => {
     })
   }),
   describe("Book prompts", () => {
-    it.skip("removeViolence", () => {
+    it("removeViolence", () => {
       const e = bookPrompts.removeViolence();
       expect(e).to.deep.equal(['1984',
         'The Great Gatsby',
@@ -255,7 +255,7 @@ describe("PROTOTYPES", () => {
         'Catch-22',
         'Treasure Island'])
     }),
-    it.skip("getNewBooks", () => {
+    it("getNewBooks", () => {
       const e = bookPrompts.getNewBooks();
       expect(e).to.deep.equal([{
         title: 'Harry Potter and the Sorcerer\'s Stone', year: 1997 },
@@ -265,7 +265,7 @@ describe("PROTOTYPES", () => {
     })
   }),
   describe("Weather prompts", () => {
-    it.skip("getAverageTemps", () => {
+    it.only("getAverageTemps", () => {
       const e = weatherPrompts.getAverageTemps();
       expect(e).to.deep.equal([
         40, 40, 44.5, 43.5, 57, 35, 65.5, 62, 14, 46.5

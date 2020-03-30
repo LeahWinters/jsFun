@@ -3,6 +3,8 @@ const scope = {
     let personA = 'Paul';
     let personB = 'Ben';
     let personC = 'Tom';
+    let personD = null;
+    const emptyArray = [];
 
     function changePerson() {
       if (personA === 'Paul') {
@@ -12,24 +14,30 @@ const scope = {
 
       function beautifyPerson() {
         // Log A: personB
-        
+        emptyArray.push({A: personB});
+        // console.log(emptyArray)
+
         if (personB.includes('B')) {
           personB = person;
           personC = personB;
           // Log B: personC
+          emptyArray.push({B: personC});
+
         }
+
       }
 
       personC = personA;
-
       // Log C: personB
+      emptyArray.push({C: personB});
+
     }
 
     changePerson();
-
+    emptyArray.push({D: personA});
     // Log D: personC
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = emptyArray;
     return result;
 
     // Annotation:
@@ -315,7 +323,7 @@ const scope = {
       // Log B: toppings
       var toppings = 'chipotle sauce';
 
-      if (toppings === 'chipotle sauce') { 
+      if (toppings === 'chipotle sauce') {
         sandwich = 'not a mediocre sandwich';
       }
 
@@ -518,7 +526,7 @@ const scope = {
       // Log A: kid
       wildKids.push(kid);
       // Log B: wildKids
-  
+
       let drawOnTheWall = () => {
         let myKid = 'Mandy';
         // Log C: myKid
@@ -556,7 +564,7 @@ const scope = {
       // Log B: myName
 
       let innerFunc = () => {
-        let myName = 'Tesla'; 
+        let myName = 'Tesla';
         // Log C: myName
       };
 
