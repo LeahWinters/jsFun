@@ -402,7 +402,7 @@ const bookPrompts = {
       let cleanedData = {
         title: book.title,
         year: book.published
-      }
+      };
       return cleanedData;
     });
 
@@ -450,7 +450,13 @@ const weatherPrompts = {
     // 'New Orleans, Louisiana is sunny.',
     // 'Raleigh, North Carolina is mostly sunny.' ]
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = weather.reduce((acc, location) => {
+      if (location.type === 'sunny' || location.type === 'mostly sunny') {
+        var saying = `${location.location} is ${location.type}.`;
+        acc.push(saying);
+      }
+      return acc;
+    }, []);
     return result;
 
     // Annotation:
@@ -466,8 +472,12 @@ const weatherPrompts = {
     //   temperature: { high: 49, low: 38 }
     // }
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
-    return result;
+
+
+    const result = weather.sort((a, b) => {
+      return b.humidity - a.humidity;
+    });
+    return result[0];
 
     // Annotation:
     // Write your annotation here as a comment
@@ -493,7 +503,16 @@ const nationalParksPrompts = {
     //   parksVisited: ["Rocky Mountain", "Acadia", "Zion"]
     //}
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = nationalParks.reduce((acc, park) => {
+      let newKey = park.visited === true ? 'parksVisited' : 'parksToVisit';
+      if(!acc[newKey]) {
+        acc[newKey] = [park.name];
+      } else {
+        acc[newKey].push(park.name);
+      }
+      return acc;
+    }, {});
+
     return result;
 
     // Annotation:
@@ -510,7 +529,11 @@ const nationalParksPrompts = {
     // { Florida: 'Everglades' } ]
 
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = nationalParks.reduce((acc, park) => {
+      let newKey = park.location;
+      acc.push({[newKey]: park.name});
+      return acc;
+    }, []);
     return result;
 
     // Annotation:
@@ -533,7 +556,14 @@ const nationalParksPrompts = {
     //   'backpacking',
     //   'rock climbing' ]
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = nationalParks.reduce((acc, park) => {
+      park.activities.forEach(activity => {
+        if (!acc.includes(activity)) {
+          acc.push(activity);
+        }
+      });
+      return acc;
+    }, []);
     return result;
 
     // Annotation:
@@ -560,7 +590,10 @@ const breweryPrompts = {
     // Return the total beer count of all beers for every brewery e.g.
     // 40
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = breweries.reduce((acc, brewery) => {
+      acc += brewery.beers.length;
+      return acc;
+    }, 0);
     return result;
 
     // Annotation:
@@ -576,7 +609,10 @@ const breweryPrompts = {
     // ...etc.
     // ]
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = breweries.reduce((acc, brewery) => {
+      {acc[brewery.name]: }
+      return acc;
+    }, []);
     return result;
 
     // Annotation:
