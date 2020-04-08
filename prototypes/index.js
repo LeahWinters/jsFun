@@ -610,7 +610,7 @@ const breweryPrompts = {
     // ]
 
     const result = breweries.reduce((acc, brewery) => {
-      {acc[brewery.name]: }
+      // {acc[brewery.name]: }
       return acc;
     }, []);
     return result;
